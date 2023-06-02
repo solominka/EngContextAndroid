@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_rectangle">
+
+    <TextView
+        android:id="@+id/serp_item_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="The sixth Delhi is the Purana Qila, or Old Fort, a 16th-century stone fort near the eastern edge of the city, and a particularly good place from which to tell the story of Delhi's urban development"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/serp_item_source"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="The Guardian"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/serp_item_text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
