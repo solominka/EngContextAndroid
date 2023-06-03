@@ -13,9 +13,6 @@ import com.example.engcontext.R
 import com.example.engcontext.databinding.SearchBarFragmentBinding
 
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class SearchBarFragment : Fragment() {
 
     private var _binding: SearchBarFragmentBinding? = null
@@ -44,7 +41,7 @@ class SearchBarFragment : Fragment() {
         binding.searchButton.setOnClickListener {
             val query = binding.searchBarTextInput.text.toString()
             findNavController().navigate(
-                R.id.action_SearchBarFragmentFragment_to_SerpFragment,
+                R.id.action_SearchBarFragment_to_SerpFragment,
                 bundleOf("query" to query)
             )
         }
