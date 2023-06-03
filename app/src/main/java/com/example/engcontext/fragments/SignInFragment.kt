@@ -18,14 +18,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
-import javax.inject.Inject
+import com.google.firebase.auth.FirebaseAuth
 
 
 class SignInFragment : Fragment() {
 
     private var _binding: SigninFragmentBinding? = null
-
-    @Inject
+    private val firebaseAuth = FirebaseAuth.getInstance()
     private lateinit var googleSignInClient: GoogleSignInClient
 
     // This property is only valid between onCreateView and
@@ -51,13 +50,11 @@ class SignInFragment : Fragment() {
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
-
         googleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
 
-
         binding.signUpTextView.setOnClickListener { onRegisterClick() }
-
         binding.googleSignIn.setOnClickListener { onGoogleSignInClick() }
+        binding.signInButton.setOnClickListener { onSignInClick() }
     }
 
     override fun onDestroyView() {
@@ -72,6 +69,21 @@ class SignInFragment : Fragment() {
     private fun onGoogleSignInClick() {
         val signInIntent = googleSignInClient.signInIntent
         launcher.launch(signInIntent)
+    }
+
+    private fun onSignInClick() {
+        val email = binding.emailTextInput.text.toString()
+        val password = binding.passwordTextInput.text.toString()
+        firebaseAuth.signInWithEmailAndPassword(
+            email,
+            password,
+        ).addOnCompleteListener {
+            if (it.isSuccessful) {
+                findNavController().navigate(R.id.action_SignInFragment_to_SearchBarFragment)
+            } else {
+                showSnackBar("Ooops... ${it.exception?.message}")
+            }
+        }
     }
 
     private val launcher =
