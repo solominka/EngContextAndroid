@@ -17,6 +17,6 @@ interface SearchHistoryDao {
     @Insert
     fun insertAll(vararg histories: SearchHistory)
 
-    @Delete
-    fun delete(history: SearchHistory)
+    @Query("DELETE FROM search_history WHERE query = :query")
+    fun deleteByQuery(query: String)
 }

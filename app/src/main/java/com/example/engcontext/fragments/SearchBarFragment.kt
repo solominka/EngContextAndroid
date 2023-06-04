@@ -12,11 +12,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.room.Room
+import com.example.engcontext.MainActivity
 import com.example.engcontext.R
 import com.example.engcontext.adapters.SearchHistoryItemAdapter
 import com.example.engcontext.databinding.SearchBarFragmentBinding
-import com.example.engcontext.db.AppDatabase
 import com.example.engcontext.db.SearchHistory
 import com.example.engcontext.models.SearchHistoryItem
 import kotlinx.coroutines.Dispatchers
@@ -26,7 +25,6 @@ import kotlinx.coroutines.launch
 class SearchBarFragment : Fragment() {
 
     private var _binding: SearchBarFragmentBinding? = null
-    private lateinit var db: AppDatabase
     private lateinit var adapter: SearchHistoryItemAdapter
     private lateinit var searchHistory: LiveData<List<SearchHistory>>
 
@@ -40,11 +38,7 @@ class SearchBarFragment : Fragment() {
     ): View {
         _binding = SearchBarFragmentBinding.inflate(inflater, container, false)
 
-        db = Room.databaseBuilder(
-            requireContext(),
-            AppDatabase::class.java, "search_history"
-        ).build()
-        searchHistory = db.searchHistoryDao().getLast5()
+        searchHistory = MainActivity.db.searchHistoryDao().getLast5()
         searchHistory.observe(viewLifecycleOwner) { histories ->
             adapter.submitData(histories.map {
                 SearchHistoryItem(
@@ -80,7 +74,7 @@ class SearchBarFragment : Fragment() {
 
         lifecycleScope.launch(Dispatchers.IO) {
             if (query != "")
-                db.searchHistoryDao().insertAll(SearchHistory(query = query))
+                MainActivity.db.searchHistoryDao().insertAll(SearchHistory(query = query))
         }
 
         findNavController().navigate(

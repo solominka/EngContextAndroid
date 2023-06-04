@@ -8,13 +8,18 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.room.Room
 import com.example.engcontext.databinding.ActivityMainBinding
+import com.example.engcontext.db.AppDatabase
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
+    companion object {
+        lateinit var db: AppDatabase
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +32,11 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        db = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java, "search_history"
+        ).build()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
