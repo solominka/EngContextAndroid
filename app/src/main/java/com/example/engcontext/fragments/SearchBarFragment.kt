@@ -38,6 +38,11 @@ class SearchBarFragment : Fragment() {
     ): View {
         _binding = SearchBarFragmentBinding.inflate(inflater, container, false)
 
+        val manager = LinearLayoutManager(this.context)
+        adapter = SearchHistoryItemAdapter(binding.searchBarTextInput)
+        binding.searchHistoryRecyclerView.layoutManager = manager
+        binding.searchHistoryRecyclerView.adapter = adapter
+
         searchHistory = MainActivity.db.searchHistoryDao().getLast5()
         searchHistory.observe(viewLifecycleOwner) { histories ->
             adapter.submitData(histories.map {
@@ -47,11 +52,6 @@ class SearchBarFragment : Fragment() {
                 )
             })
         }
-
-        val manager = LinearLayoutManager(this.context)
-        adapter = SearchHistoryItemAdapter()
-        binding.searchHistoryRecyclerView.layoutManager = manager
-        binding.searchHistoryRecyclerView.adapter = adapter
 
         return binding.root
     }

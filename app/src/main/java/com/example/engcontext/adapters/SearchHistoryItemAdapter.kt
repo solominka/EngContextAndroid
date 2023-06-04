@@ -6,9 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.engcontext.MainActivity
 import com.example.engcontext.databinding.SearchHistoryItemBinding
 import com.example.engcontext.models.SearchHistoryItem
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.*
 
-class SearchHistoryItemAdapter :
+class SearchHistoryItemAdapter(private val searchBarTextInput: TextInputEditText) :
     RecyclerView.Adapter<SearchHistoryItemAdapter.SearchHistoryItemViewHolder>() {
 
     private var data: List<SearchHistoryItem> = listOf()
@@ -25,7 +26,16 @@ class SearchHistoryItemAdapter :
             deleteSearchHistory()
         }
 
+        binding!!.searchHistoryText.setOnClickListener {
+            pasteFromHistory()
+        }
+
         return SearchHistoryItemViewHolder(binding!!)
+    }
+
+    private fun pasteFromHistory() {
+        val historyText = binding!!.searchHistoryText.text
+        searchBarTextInput.setText(historyText)
     }
 
     private fun deleteSearchHistory() {
