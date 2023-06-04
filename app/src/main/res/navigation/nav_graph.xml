@@ -3,7 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/SearchBarFragment">
+    app:startDestination="@id/SignInFragment">
+
+    <fragment
+        android:id="@+id/SignInFragment"
+        android:name="com.example.engcontext.fragments.SignInFragment"
+        android:label="@string/sign_in_fragment_label"
+        tools:layout="@layout/signin_fragment">
+
+        <action
+            android:id="@+id/action_SignInFragment_to_SearchBarFragment"
+            app:destination="@id/SearchBarFragment" />
+
+        <action
+            android:id="@+id/action_SignInFragment_to_RegisterFragment"
+            app:destination="@id/RegisterFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/RegisterFragment"
+        android:name="com.example.engcontext.fragments.RegisterFragment"
+        android:label="@string/register_fragment_label"
+        tools:layout="@layout/register_fragment">
+
+        <action
+            android:id="@+id/action_SignInFragment_to_SignInFragment"
+            app:destination="@id/SignInFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/SearchBarFragment"
@@ -12,9 +38,10 @@
         tools:layout="@layout/search_bar_fragment">
 
         <action
-            android:id="@+id/action_SearchBarFragmentFragment_to_SerpFragment"
+            android:id="@+id/action_SearchBarFragment_to_SerpFragment"
             app:destination="@id/SerpFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/SerpFragment"
         android:name="com.example.engcontext.fragments.SerpFragment"
