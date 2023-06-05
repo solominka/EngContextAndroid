@@ -1,10 +1,7 @@
 package com.example.engcontext.db
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface SearchHistoryDao {
@@ -14,7 +11,7 @@ interface SearchHistoryDao {
     @Query("SELECT * FROM search_history ORDER BY made_at DESC LIMIT 5")
     fun getLast5(): LiveData<List<SearchHistory>>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg histories: SearchHistory)
 
     @Query("DELETE FROM search_history WHERE query = :query")
