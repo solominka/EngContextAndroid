@@ -2,6 +2,7 @@ package com.example.engcontext.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.engcontext.MainActivity
 import com.example.engcontext.databinding.SearchHistoryItemBinding
@@ -22,24 +23,17 @@ class SearchHistoryItemAdapter(private val searchBarTextInput: TextInputEditText
         val inflater = LayoutInflater.from(parent.context)
         binding = SearchHistoryItemBinding.inflate(inflater, parent, false)
 
-        binding!!.deleteSearchHistoryButton.setOnClickListener {
-            deleteSearchHistory()
-        }
-
-        binding!!.searchHistoryText.setOnClickListener {
-            pasteFromHistory()
-        }
-
         return SearchHistoryItemViewHolder(binding!!)
     }
 
-    private fun pasteFromHistory() {
-        val historyText = binding!!.searchHistoryText.text
-        searchBarTextInput.setText(historyText)
+    private fun pasteFromHistory(searchHistoryText: TextView) {
+        val historyText = searchHistoryText.text
+        searchBarTextInput.setText("")
+        searchBarTextInput.append(historyText)
     }
 
-    private fun deleteSearchHistory() {
-        val query = binding!!.searchHistoryText.text.toString()
+    private fun deleteSearchHistory(searchHistoryText: TextView) {
+        val query = searchHistoryText.text.toString()
         GlobalScope.launch(Dispatchers.IO) {
             MainActivity.db.searchHistoryDao().deleteByQuery(query)
         }.invokeOnCompletion {
@@ -58,6 +52,8 @@ class SearchHistoryItemAdapter(private val searchBarTextInput: TextInputEditText
 
         with(holder.binding) {
             searchHistoryText.text = searchHistory.query
+            deleteSearchHistoryButton.setOnClickListener { deleteSearchHistory(searchHistoryText) }
+            searchHistoryText.setOnClickListener { pasteFromHistory(searchHistoryText) }
         }
     }
 

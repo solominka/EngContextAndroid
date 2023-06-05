@@ -53,6 +53,8 @@ class SearchBarFragment : Fragment() {
             })
         }
 
+        binding.searchBarTextInput.append(savedInstanceState?.getString("query") ?: "")
+
         return binding.root
     }
 
@@ -83,8 +85,8 @@ class SearchBarFragment : Fragment() {
         )
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("query", binding.searchBarTextInput.text.toString())
     }
 }

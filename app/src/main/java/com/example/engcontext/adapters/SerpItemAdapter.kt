@@ -47,4 +47,9 @@ class SerpItemAdapter : RecyclerView.Adapter<SerpItemAdapter.SerpItemViewHolder>
             serpItemSource.text = serpItem.source
         }
     }
+
+    fun submitData(newData: List<SerpItem>) {
+        data = newData
+        notifyDataSetChanged()
+    }
 }
