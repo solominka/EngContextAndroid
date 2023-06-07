@@ -3,25 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/rounded_rectangle">
+    android:background="@drawable/rounded_rectangle"
+    android:backgroundTint="#FAFAFA">
 
     <TextView
         android:id="@+id/search_history_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8sp"
+        android:fontFamily="@font/poppins"
         android:paddingEnd="50sp"
         android:text="test"
-        android:textSize="24sp"
+        android:textSize="20sp"
+        app:boxBackgroundColor="@color/gray"
         app:layout_constraintEnd_toStartOf="@+id/delete_search_history_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <ImageButton
         android:id="@+id/delete_search_history_button"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
+        android:layout_width="26sp"
+        android:layout_height="26sp"
         android:background="@android:drawable/ic_menu_close_clear_cancel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:boxBackgroundColor="@color/gray"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
