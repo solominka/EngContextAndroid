@@ -37,51 +37,31 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30sp"
             android:fontFamily="@font/poppins"
-            android:text="Email Address"
+            android:text="Email"
             android:textColor="#66328E"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@id/email"
-            app:layout_constraintTop_toBottomOf="@id/signInTextView" />
+            app:layout_constraintStart_toStartOf="@id/emailTextInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/signInTextView"
+            tools:layout_editor_absoluteY="210dp" />
 
-        <LinearLayout
-            android:id="@+id/email"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailTextInputLayout"
+            style="@style/Widget.Design.TextInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="44sp"
+            android:layout_height="60sp"
             android:layout_marginStart="@dimen/standard_padding"
-            android:layout_marginTop="10sp"
             android:layout_marginEnd="@dimen/standard_padding"
-
-            android:background="@drawable/rounded_rectangle"
-            android:orientation="horizontal"
+            android:hint="@string/email"
+            app:boxStrokeColor="@color/purple_700"
+            app:hintTextColor="?attr/colorPrimary"
             app:layout_constraintTop_toBottomOf="@id/emailText">
 
-            <ImageButton
-                android:id="@+id/emailIcon"
-                android:layout_width="28sp"
-                android:layout_height="28sp"
-                android:background="#FFFFFF"
-                android:rotation="-25"
-                android:src="@drawable/mail" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/emailTextInputLayout"
-                style="@style/Widget.Design.TextInputLayout"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailTextInput"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/standard_padding"
-                android:layout_marginEnd="@dimen/standard_padding"
-                android:fontFamily="@font/poppins"
-                android:hint="@string/password"
-                app:boxStrokeColor="@color/black"
-                app:hintTextColor="?attr/colorPrimary"
-                app:layout_constraintTop_toBottomOf="@id/passwordText">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/emailTextInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/passwordText"
@@ -92,61 +72,40 @@
             android:text="Password"
             android:textColor="#66328E"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@id/password"
-            app:layout_constraintTop_toBottomOf="@id/email"
-            tools:layout_editor_absoluteY="210dp" />
+            app:layout_constraintStart_toStartOf="@id/emailTextInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/emailTextInputLayout" />
 
-        <LinearLayout
-            android:id="@+id/password"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordTextInputLayout"
+            style="@style/Widget.Design.TextInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="44sp"
+            android:layout_height="match_parent"
             android:layout_marginStart="@dimen/standard_padding"
-            android:layout_marginTop="10sp"
             android:layout_marginEnd="@dimen/standard_padding"
+            android:fontFamily="@font/poppins"
+            android:hint="@string/password"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="?attr/colorPrimary"
+            app:layout_constraintTop_toBottomOf="@id/passwordText"
+            app:passwordToggleEnabled="true">
 
-            android:background="@drawable/rounded_rectangle"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/passwordText">
-
-            <ImageButton
-                android:id="@+id/search_button"
-                android:layout_width="28sp"
-                android:layout_height="28sp"
-                android:background="#FFFFFF"
-                android:rotation="-25"
-                android:src="@drawable/lock" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/passwordTextInputLayout"
-                style="@style/Widget.Design.TextInputLayout"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordTextInput"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/standard_padding"
-                android:fontFamily="@font/poppins"
-                android:hint="@string/password"
-                app:boxStrokeColor="@color/black"
-                app:hintTextColor="?attr/colorPrimary"
-                app:layout_constraintTop_toBottomOf="@id/passwordText"
-                app:passwordToggleEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/passwordTextInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
+                android:layout_height="match_parent" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/signInButton"
             android:layout_width="match_parent"
             android:layout_height="60sp"
             android:layout_marginStart="@dimen/standard_padding"
-            android:layout_marginTop="30sp"
             android:layout_marginEnd="@dimen/standard_padding"
+            android:layout_marginTop="30sp"
             android:backgroundTint="#66328E"
             android:fontFamily="@font/poppins"
             android:text="@string/common_signin_button_text"
-            app:layout_constraintTop_toBottomOf="@id/password" />
+            app:layout_constraintTop_toBottomOf="@id/passwordTextInputLayout" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/signUpTextView"

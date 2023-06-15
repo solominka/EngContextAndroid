@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -54,12 +55,12 @@
             android:layout_marginStart="@dimen/standard_padding"
             android:layout_marginTop="30sp"
             android:layout_marginEnd="@dimen/standard_padding"
-            android:background="@drawable/rounded_rectangle"
             android:backgroundTint="#66328E"
             android:fontFamily="@font/poppins"
             android:text="@string/create_act"
             android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:cornerRadius="16dp" />
 
     </RelativeLayout>
 
