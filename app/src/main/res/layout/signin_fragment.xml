@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -15,18 +16,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="90sp" />
+            app:layout_constraintGuide_begin="70sp" />
 
         <TextView
             android:id="@+id/signInTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
             android:text="@string/common_signin_button_text"
-            android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textColor="#66328E"
+            android:textSize="38sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/upper_line" />
+
+        <TextView
+            android:id="@+id/emailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:fontFamily="@font/poppins"
+            android:text="Email"
+            android:textColor="#66328E"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/emailTextInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/signInTextView" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailTextInputLayout"
@@ -34,12 +49,11 @@
             android:layout_width="match_parent"
             android:layout_height="60sp"
             android:layout_marginStart="@dimen/standard_padding"
-            android:layout_marginTop="30sp"
             android:layout_marginEnd="@dimen/standard_padding"
             android:hint="@string/email"
             app:boxStrokeColor="@color/purple_700"
             app:hintTextColor="?attr/colorPrimary"
-            app:layout_constraintTop_toBottomOf="@id/signInTextView">
+            app:layout_constraintTop_toBottomOf="@id/emailText">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailTextInput"
@@ -48,26 +62,36 @@
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/passwordText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:fontFamily="@font/poppins"
+            android:text="Password"
+            android:textColor="#66328E"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/emailTextInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/emailTextInputLayout" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordTextInputLayout"
             style="@style/Widget.Design.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="60sp"
             android:layout_marginStart="@dimen/standard_padding"
-            android:layout_marginTop="30sp"
             android:layout_marginEnd="@dimen/standard_padding"
+            android:fontFamily="@font/poppins"
             android:hint="@string/password"
-            app:boxStrokeColor="@color/purple_700"
+            app:boxStrokeColor="@color/black"
             app:hintTextColor="?attr/colorPrimary"
-            app:layout_constraintTop_toBottomOf="@id/emailTextInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/passwordText"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordTextInput"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="textPassword"
-                android:textColor="#000" />
+                android:layout_height="match_parent" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -75,8 +99,10 @@
             android:layout_width="match_parent"
             android:layout_height="60sp"
             android:layout_marginStart="@dimen/standard_padding"
-            android:layout_marginTop="30sp"
             android:layout_marginEnd="@dimen/standard_padding"
+            android:layout_marginTop="30sp"
+            android:backgroundTint="#66328E"
+            android:fontFamily="@font/poppins"
             android:text="@string/common_signin_button_text"
             app:layout_constraintTop_toBottomOf="@id/passwordTextInputLayout" />
 
@@ -85,6 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/standard_padding"
+            android:fontFamily="@font/poppins"
             android:text="Don't Have an account? Sign up"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -95,6 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40sp"
+            android:fontFamily="@font/poppins"
             android:text="or"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
